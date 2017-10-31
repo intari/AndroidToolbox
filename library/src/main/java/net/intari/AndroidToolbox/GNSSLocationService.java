@@ -3,6 +3,7 @@ package net.intari.AndroidToolbox;
 import android.Manifest;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -101,6 +102,14 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
         return ((GNSSLocationService.LocalBinder)binder).getService();
     }
 
+    /**
+     * Make it easy to start this service by users
+     * @param context context to use
+     * @return ComponentName (regular return from startService)
+     */
+    public static ComponentName startThisService(Context context) {
+        return context.startService(new Intent(context,GNSSLocationService.class));
+    }
     /**
      * Get service instance
      * @return service instance
