@@ -24,7 +24,7 @@ public class VertexArray {
 
     public VertexArray(float[] vertexData) {
         floatBuffer = ByteBuffer
-                .allocateDirect(vertexData.length * BYTES_PmakmER_FLOAT)
+                .allocateDirect(vertexData.length * BYTES_PER_FLOAT)
                 .order(ByteOrder.nativeOrder())
                 .asFloatBuffer()
                 .put(vertexData);
