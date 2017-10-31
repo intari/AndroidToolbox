@@ -1,5 +1,11 @@
 <manifest package="net.intari.AndroidToolbox"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <application>
+        <service
+            android:name=".GNSSLocationService"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
 
 </manifest>
