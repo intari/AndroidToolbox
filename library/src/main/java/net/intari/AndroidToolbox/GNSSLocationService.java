@@ -90,6 +90,16 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
         CustomLog.i(TAG,"GNSSLocationService()");
     }
 
+    /**
+     * Work around Kotlin's package protection issues
+     * Prevents issues like 'Error:(113, 76) Cannot access 'service': it is public *package* for synthetic extension in '<dependencies of app_debug>'
+     * see also https://discuss.kotlinlang.org/t/kotlin-to-support-package-protected-visibility/1544/11 ?
+     * @param binder IBinder instance of our connected service
+     * @return connected service
+     */
+    public static GNSSLocationService getMyServiceFromLocalBinder(IBinder binder) {
+        return ((GNSSLocationService.LocalBinder)binder).getService();
+    }
 
     /**
      * Get service instance
