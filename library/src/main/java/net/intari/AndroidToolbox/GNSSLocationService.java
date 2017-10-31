@@ -95,7 +95,7 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
      * Get service instance
      * @return service instance
      */
-    protected GNSSLocationService getService() {
+    public GNSSLocationService getService() {
         return GNSSLocationService.this;
     }
 
