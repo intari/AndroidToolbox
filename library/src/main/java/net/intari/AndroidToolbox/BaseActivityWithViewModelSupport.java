@@ -11,6 +11,7 @@ import net.intari.CustomLogger.CustomLog;
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 13.05.17.
  * Base Activity with supports for ModeView restore logic from https://habrahabr.ru/post/328512/
  * and with regular Base Activity code
+ * TODO:translate comments to English
  */
 
 public abstract class BaseActivityWithViewModelSupport<T extends BaseViewModel> extends BaseActivityWithGNSSSupport {

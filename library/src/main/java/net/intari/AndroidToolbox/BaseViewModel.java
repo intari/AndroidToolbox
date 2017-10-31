@@ -9,6 +9,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 13.05.17.
  * idea from https://habrahabr.ru/post/328512/
+ * TODO:translate comments to English
  */
 public abstract class BaseViewModel extends BaseObservable {
 
