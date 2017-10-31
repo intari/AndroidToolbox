@@ -161,7 +161,7 @@ public class BaseActivity extends NaviAppCompatActivity {
      */
     protected void postUiRunnable(final Runnable runnable)
     {
-        CustomLog.v(TAG, "UiRunnables = " + runnable);
+        //CustomLog.v(TAG, "UiRunnables = " + runnable);
         if (null == runnable){
             return;
         }
@@ -187,7 +187,7 @@ public class BaseActivity extends NaviAppCompatActivity {
         if (mIsPaused) return;
         if (mUiRunnables.isEmpty()) return;
 
-        CustomLog.d(TAG,"UiRunnables Running");
+        //CustomLog.d(TAG,"UiRunnables Running");
         final Iterator<Runnable> it = mUiRunnables.iterator();
         Runnable run;
         while (it.hasNext())
