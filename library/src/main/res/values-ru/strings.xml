@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_gps_denied">Отказано в доступе в GNSS. Пожалуйста предоставьте доступ к GNSS для навигации.</string>
+    <string name="permission_gps_never_askagain">Отказано в доступе к GNSS и попросили больше не беспокоить. Если вам нужно пользоваться приложением, зайдите в \'Разрешения\' и выдайте разрешение</string>
+    <string name="permission_gps_rationale">Приложению требуется доступ к GNSSS для навигации.</string>
+    <string name="gnss_button_allow">Разрешить</string>
+    <string name="gnss_button_deny">Запретить</string>
+    <string name="no_gnss">Нет доступа к системам GNSS (запрет пользователя)</string>
+    <string name="no_gps_provider">Нет доступа к системам GNSS (не включено</string>
+
+
+</resources>

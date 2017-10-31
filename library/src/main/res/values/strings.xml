@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="permission_gps_denied">GNSS access forbidden. .</string>
+    <string name="permission_gps_never_askagain">GNSS access forbidden and asked not to ask again. If you need this function, go to \'Permissions\' and give access</string>
+    <string name="permission_gps_rationale">Application needs GNSS access.</string> <!-- TODO: make it possible to replace this string by library users -->
+    <string name="gnss_button_allow">Allow</string>
+    <string name="gnss_button_deny">Deny</string>
+    <string name="no_gnss">No GNSS access (user restriction)</string>
+    <string name="no_gps_provider">No GNSS access (not enabled)</string>
+
+
+</resources>
