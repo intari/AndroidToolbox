@@ -17,19 +17,19 @@ import net.intari.CustomLogger.CustomLog;
 public abstract class BaseActivityWithViewModelSupport<T extends BaseViewModel> extends BaseActivityWithGNSSSupport {
     public static final String TAG = BaseActivityWithViewModelSupport.class.getSimpleName();
 
-    private static final String DATA = "data"; //Для сохранения данных
-    private T data; //Дженерик, ибо для каждого активити используется своя ViewModel
+    private static final String DATA = "data"; //to save data
+    private T data; //Generic because every activity uses it's own ViewModel
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState != null)
-            data = savedInstanceState.getParcelable(DATA); //Восстанавливаем данные если они есть
+            data = savedInstanceState.getParcelable(DATA); //Restore data if they exist
         else
-            connectData(); //Если нету - подключаем новые
+            connectData(); //Connect new data if non exist
 
 
-        setActivity(); //Привязываем активити для ViewModel (если не используем Dagger)
+        setActivity(); //link activity
         super.onCreate(savedInstanceState);
     }
 
@@ -44,8 +44,7 @@ public abstract class BaseActivityWithViewModelSupport<T extends BaseViewModel> 
     }
 
     /**
-     * Метод onDestroy будет вызываться при любом повороте экрана, так что нам нужно знать
-     * что мы сами закрываем активити, что бы уничтожить данные.
+     * onDestroy is called on every rotation too so we must knew that we close activity ourselves to destroy data
      */
     @Override
     protected void onDestroy() {
@@ -69,9 +68,10 @@ public abstract class BaseActivityWithViewModelSupport<T extends BaseViewModel> 
 
 
     /**
-     * Возвращаем данные
+     * Return data
      *
-     * @return возврощает ViewModel, которая прикреплена за конкретной активити
+     * @return Returns  ViewModel linked to specific activity
+     *
      */
     public T getData() {
         CustomLog.d(TAG, "Returning data "+data.toString());
@@ -79,7 +79,7 @@ public abstract class BaseActivityWithViewModelSupport<T extends BaseViewModel> 
     }
 
     /**
-     * Прикрепляем ViewModel к активити
+     * Link ViewModel to activity
      *
      * @param data
      */
@@ -89,7 +89,7 @@ public abstract class BaseActivityWithViewModelSupport<T extends BaseViewModel> 
 
 
     /**
-     * Уничтожаем данные, предварительно отписываемся от всех подписок Rx
+     * Destroy data and unlink from all Rx subscriptions
      */
     public void destroyData() {
         if (data != null) {
@@ -101,11 +101,8 @@ public abstract class BaseActivityWithViewModelSupport<T extends BaseViewModel> 
 
 
     /**
-     * Абстрактный метод, который вызывается, если у нас еще нет сохраненных данных
+     * Abstract method, gets called if we don't have (any) stored data yet
      */
     protected abstract void connectData();
-
-
-
 
 }
