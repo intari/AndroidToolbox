@@ -21,7 +21,11 @@ android:
     # The BuildTools version used by your project
     - build-tools-26.0.2
     - android-25
-
+ licenses:
+    - android-sdk-license-.+
+    - '.+'
+    
+    
 before_install:
   # for gradle output style
   - export TERM=dumb
@@ -35,10 +39,13 @@ before_install:
   - echo "Local Properties file is "
   - cat local.properties
   # manually accept licenses https://github.com/travis-ci/travis-ci/issues/6555
+  # https://stackoverflow.com/questions/42731625/travis-ci-failed-because-cannot-accept-license-constrain-layout/42736695#42736695
   - echo yes | sdkmanager android
   - echo yes | sdkmanager tools
   - echo yes | sdkmanager build-tools
-
+  # Check components status
+  - sdkmanager --list || true
+  
 script:
     - ./gradlew clean install
     
