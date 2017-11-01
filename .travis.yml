@@ -41,7 +41,6 @@ before_install:
   # manually accept licenses https://github.com/travis-ci/travis-ci/issues/6555
   # https://stackoverflow.com/questions/42731625/travis-ci-failed-because-cannot-accept-license-constrain-layout/42736695#42736695
   - echo yes | sdkmanager tools
-  - echo yes | sdkmanager build-tools
   # Check components status
   - sdkmanager --list || true
   
