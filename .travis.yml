@@ -40,6 +40,6 @@ before_install:
 script:
     - ./gradlew clean install
     
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+#after_success:
+#  - bash <(curl -s https://codecov.io/bash)
   
