@@ -38,7 +38,6 @@ before_install:
   - echo yes | sdkmanager android
   - echo yes | sdkmanager tools
   - echo yes | sdkmanager build-tools
-  - echo yes | sdkmanager android-25
 
 script:
     - ./gradlew clean install
