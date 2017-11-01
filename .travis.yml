@@ -20,6 +20,7 @@ android:
 
     # The BuildTools version used by your project
     - build-tools-26.0.2
+    - android-25
 
 before_install:
   # for gradle output style
