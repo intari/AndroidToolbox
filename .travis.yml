@@ -28,7 +28,7 @@ before_install:
   - export TERM=dumb
   # environment info
   # - sudo chmod +x gradlew
-  - ./gradleц -v
+  - ./gradlew -v
   - uname -a
   - echo "Android Home:$ANDROID_HOME"
   # manually set sdk.dir variable, according to local paths
