@@ -234,11 +234,26 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
 
     /**
      * Request location permissions and start updates
-     * To be called from activity
      * Will perform early successful return if location manager arleady initialized
-     * @return was it successful?
+     * To be called from activity
+     * will use default values for time intervals
+     * @return completable
      */
     public Completable gotPermissionSoStartUpdates() {
+        return gotPermissionSoStartUpdates(GPS_TIME,NET_TIME,FILTER_TIME);
+    }
+
+    /**
+     * Request location permissions and start updates
+     * To be called from activity
+     * Will perform early successful return if location manager arleady initialized
+     * @param filterTime time between kalman updates
+     * @param gpsTime  requested time between GPS updates
+     * @param netTime requested time between Network Location updates
+     *
+     * @return
+     */
+    public Completable gotPermissionSoStartUpdates(long gpsTime,long netTime,long filterTime) {
         //early successful return if updates arleady started (and somebode called us twice in row, it's possible because
         if (kalmanLocationManager!=null) {
             CustomLog.v(TAG,"Location updates arleady started");
@@ -248,7 +263,7 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
         }
 
         //no early return, perform real initialization
-        Completable completable=initGNSS()
+        Completable completable=initGNSS(gpsTime, netTime, filterTime)
                 .subscribeOn(AndroidSchedulers.mainThread()) //we need looper here
                 .observeOn(AndroidSchedulers.mainThread()) // We can touch in showMessage so...
                 .cache();//cache result. we need it twice
@@ -271,9 +286,12 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
     /**
      * Init location monitoring
      * TODO:make it also possible to ask for Network Provider (and also support fused location provider)
-     * @return was it successful?
+     * @param filterTime time between updates (via calman)
+     * @param gpsTime
+     * @param netTime
+     * @return
      */
-    private Completable initGNSS() {
+    private Completable initGNSS(long filterTime,long gpsTime,long netTime) {
         return Completable.create( s -> {
 
             //get Location Manager
@@ -288,12 +306,12 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
                 //return;
             }
 
-            // пишем что реально доступно
+            // wrote what we can use
             String providers = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             CustomLog.d(TAG,"Allowed GPS Providers:"+providers);
 
-            // запрашиваем обновления на максимальной частоте
-            kalmanLocationManager.requestLocationUpdates(KalmanLocationManager.UseProvider.GPS,FILTER_TIME,GPS_TIME,NET_TIME,this,true);
+            // request maximum (requested) frequence updates
+            kalmanLocationManager.requestLocationUpdates(KalmanLocationManager.UseProvider.GPS,filterTime,gpsTime,netTime,this,true);
 
 
             /*
