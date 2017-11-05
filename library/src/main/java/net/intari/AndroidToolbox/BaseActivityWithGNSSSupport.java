@@ -19,6 +19,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.trello.navi2.Event;
 import com.trello.navi2.rx.RxNavi;
 
+import net.intari.AndroidToolbox.interfaces.LocationParameters;
 import net.intari.CustomLogger.CustomLog;
 
 
@@ -30,10 +31,12 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * idea based on http://chrisjenx.com/android-looper-oddness/
  * Crude simulation of GCD from iOS
  * and other helper tools
+ *
  */
-public class BaseActivityWithGNSSSupport extends BaseActivity {
+public class BaseActivityWithGNSSSupport<locationParams extends LocationParameters> extends BaseActivity {
     public static final String TAG = BaseActivityWithGNSSSupport.class.getSimpleName();
 
+    private LocationParameters locationParams;
 
 
     @Override
@@ -154,19 +157,6 @@ public class BaseActivityWithGNSSSupport extends BaseActivity {
     }
 
 
-    // Injected vars
-
-    /*
-      It's very good idea to annotate EVERY usage of 'class' injected vars with scope
-      http://stackoverflow.com/questions/30552481/context-cannot-be-provided-without-an-provides-annotated-method-but-it-is
-      http://stackoverflow.com/questions/30552481/context-cannot-be-provided-without-an-provides-annotated-method-but-it-is
-     */
-    /*
-    @Inject
-    @LocationServiceInfo
-    Class locationServiceClass;
-    */
-
     // GNSS Support
     // disposables which are connected to specific services
     private CompositeDisposable servicesDisposables = new CompositeDisposable();
@@ -193,7 +183,7 @@ public class BaseActivityWithGNSSSupport extends BaseActivity {
             connectedToLocationService=true;
             CustomLog.d(TAG,"Connected to location service:"+locationService);
             //connection is only done if we have permission so start updates
-            locationService.gotPermissionSoStartUpdates()
+            locationService.gotPermissionSoStartUpdates(locationParams.gpsInterval(),locationParams.networkInterval(),locationParams.filterInterval())
                     .subscribe(
                             () -> {
                                 CustomLog.d(TAG,"Location updates active");
