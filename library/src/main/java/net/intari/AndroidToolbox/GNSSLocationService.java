@@ -58,11 +58,10 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
     private final BehaviorSubject<Pair<Integer,Integer>> satsSubject = BehaviorSubject.createDefault(new Pair(0,0));
 
 
-    // Константы location-модуля (мы ж Kalman Location Manager используем)
+    // Default constants for KalmanLocationManager
     /**
      * Request location updates with the highest possible frequency on gps.
      * Typically, this means one update per second for gps.
-     * Частота обновления GPS. 1 раз в секунду
      */
     private static final long GPS_TIME = 1000;
 
@@ -75,7 +74,6 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
     /**
      * For the filter-time argument we use a "real" value: the predictions are triggered by a timer.
      * Lets say we want 5 updates (estimates) per second = update each 200 millis.
-     * TODO:make filter time configurable by client
      */
     private static final long FILTER_TIME = 200;
 
@@ -225,11 +223,6 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
         LocalBroadcastManager.getInstance(this).registerReceiver(
                 stopRequestReceiver,new IntentFilter(STOP_REQUEST)
         );
-
-        //EventBus.getDefault().register(this);
-        //initDone=true;
-        //CustomLog.d(TAG,"done");
-
     }
 
     /**
