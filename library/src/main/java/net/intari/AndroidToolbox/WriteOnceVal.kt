@@ -8,6 +8,7 @@ import kotlin.reflect.KProperty
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 05.11.2017.
  * Helper to make val usable on Android with onCreate
  */
+
 class WriteOnceVal<T>() {
     companion object {
         val NULL_MASK = Any()
@@ -19,9 +20,20 @@ class WriteOnceVal<T>() {
         return when (localValue) {
             null -> throw IllegalStateException("not yet initialized")
             //NULL_MASK -> null
+            NULL_MASK -> throw IllegalStateException("initialized with null")
             else -> localValue as T
         }
 
+    }
+
+    fun get(): T {
+        val localValue = valueRef.get()
+        return when (localValue) {
+            null -> throw IllegalStateException("not yet initialized")
+            //NULL_MASK -> null
+            NULL_MASK -> throw IllegalStateException("initialized with null")
+            else -> localValue as T
+        }
     }
 
     fun writeOnce(value : T) {
