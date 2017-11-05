@@ -281,7 +281,7 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
      * TODO:make it also possible to ask for Network Provider (and also support fused location provider)
      * @param gpsTime
      * @param netTime
-     * @param filterTime time between updates (via calman)
+     * @param filterTime time between updates (via KalmanLocationManager)
      * @return
      */
     private Completable initGNSS(long gpsTime,long netTime,long filterTime) {
