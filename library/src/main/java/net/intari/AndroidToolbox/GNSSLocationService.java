@@ -279,12 +279,12 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
     /**
      * Init location monitoring
      * TODO:make it also possible to ask for Network Provider (and also support fused location provider)
-     * @param filterTime time between updates (via calman)
      * @param gpsTime
      * @param netTime
+     * @param filterTime time between updates (via calman)
      * @return
      */
-    private Completable initGNSS(long filterTime,long gpsTime,long netTime) {
+    private Completable initGNSS(long gpsTime,long netTime,long filterTime) {
         return Completable.create( s -> {
 
             //get Location Manager
