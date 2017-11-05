@@ -32,23 +32,11 @@ public interface LocationInterface {
      * Request location permissions and start updates
      * Will perform early successful return if location manager arleady initialized
      * To be called from activity
-     * will use default values for time intervals
+     * will use configured values for time intervals
      * @return
      */
     public Completable gotPermissionSoStartUpdates();
-
-    /**
-     * Request location permissions and start updates
-     * To be called from activity
-     * Will perform early successful return if location manager arleady initialized
-     * @param filterTime time between kalman updates
-     * @param gpsTime  requested time between GPS updates
-     * @param netTime requested time between Network Location updates
-     *
-     * @return
-     */
-    public Completable gotPermissionSoStartUpdates(long gpsTime,long netTime,long filterTime);
-    /**
+ /**
      * Returns service
      * See implementations of class
      * @return service used to create

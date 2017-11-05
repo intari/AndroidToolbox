@@ -19,7 +19,6 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.trello.navi2.Event;
 import com.trello.navi2.rx.RxNavi;
 
-import net.intari.AndroidToolbox.interfaces.LocationParameters;
 import net.intari.CustomLogger.CustomLog;
 
 
@@ -33,11 +32,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * and other helper tools
  *
  */
-public class BaseActivityWithGNSSSupport<locationParams extends LocationParameters> extends BaseActivity {
+public class BaseActivityWithGNSSSupport extends BaseActivity {
     public static final String TAG = BaseActivityWithGNSSSupport.class.getSimpleName();
-
-    private LocationParameters locationParams;
-
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -183,7 +179,7 @@ public class BaseActivityWithGNSSSupport<locationParams extends LocationParamete
             connectedToLocationService=true;
             CustomLog.d(TAG,"Connected to location service:"+locationService);
             //connection is only done if we have permission so start updates
-            locationService.gotPermissionSoStartUpdates(locationParams.gpsInterval(),locationParams.networkInterval(),locationParams.filterInterval())
+            locationService.gotPermissionSoStartUpdates()
                     .subscribe(
                             () -> {
                                 CustomLog.d(TAG,"Location updates active");

@@ -77,6 +77,36 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
      */
     private static final long FILTER_TIME = 200;
 
+
+    private static long gpsTime = GPS_TIME;
+    private static long netTime = NET_TIME;
+    private static long filterTime = FILTER_TIME;
+
+    /**
+     * Sets GNSS update time, ms
+     * @param gpsTime
+     */
+    public static void setGNSSUpdateTime(long gpsTime) {
+        GNSSLocationService.gpsTime = gpsTime;
+    }
+
+    /**
+     * Sets 'Network location' update time,ms
+     * Not currently used
+     * @param netTime
+     */
+    public static void setNetworkUpdateTime(long netTime) {
+        GNSSLocationService.netTime = netTime;
+    }
+
+    /**
+     * Sets Kalman Predicted update times,ms
+     * @param filterTime
+     */
+    public static void setKalmanUpdateTime(long filterTime) {
+        GNSSLocationService.filterTime = filterTime;
+    }
+
     private KalmanLocationManager kalmanLocationManager = null;
 
     private Location lastLocation=new Location(LocationManager.GPS_PROVIDER);//must be at least something non-null, so if we get first fix before location update, we not crash
@@ -225,28 +255,15 @@ public class GNSSLocationService extends Service implements LocationListener,Loc
         );
     }
 
-    /**
-     * Request location permissions and start updates
-     * Will perform early successful return if location manager arleady initialized
-     * To be called from activity
-     * will use default values for time intervals
-     * @return completable
-     */
-    public Completable gotPermissionSoStartUpdates() {
-        return gotPermissionSoStartUpdates(GPS_TIME,NET_TIME,FILTER_TIME);
-    }
 
     /**
      * Request location permissions and start updates
      * To be called from activity
      * Will perform early successful return if location manager arleady initialized
-     * @param filterTime time between kalman updates
-     * @param gpsTime  requested time between GPS updates
-     * @param netTime requested time between Network Location updates
      *
      * @return
      */
-    public Completable gotPermissionSoStartUpdates(long gpsTime,long netTime,long filterTime) {
+    public Completable gotPermissionSoStartUpdates() {
         //early successful return if updates arleady started (and somebode called us twice in row, it's possible because
         if (kalmanLocationManager!=null) {
             CustomLog.v(TAG,"Location updates arleady started");
