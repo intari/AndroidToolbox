@@ -8,6 +8,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/intari/AndroidToolbox.svg)](https://github.com/intari/AndroidToolbox/issues)
 [![GitHub forks](https://img.shields.io/github/forks/intari/AndroidToolbox.svg)](https://github.com/intari/AndroidToolbox/network)
 [![GitHub stars](https://img.shields.io/github/stars/intari/AndroidToolbox.svg)](https://github.com/intari/AndroidToolbox/stargazers)
+[![Read the Docs](https://img.shields.io/readthedocs/androidtoolbox.svg)](http://androidtoolbox.readthedocs.io/)
 
 
 Tools I usually use in my android apps
