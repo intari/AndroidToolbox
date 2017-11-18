@@ -39,8 +39,11 @@ Write-once read-only properties:
    glSurfaceViewDelegate.writeOnce(MyGLSurfaceView(this))
    // use glSurfaceViewDelegate as regular glSurfaceView      
 ```
+IllegalStateException will be thrown if it will actually be used before writeOnce call.
+It's better than Delegates.notNull because we can have r/o property (val) instead of r/w property (var) this way.
 
-Logging extensions (using CustomLogger)
+
+Logging extensions for any types (using CustomLogger). class.simpleName will be used as TAG.
 ```kotlin
    "HelloWorld".logInfo("message")
    this.logException(ex,"message to go with exception")
@@ -91,5 +94,11 @@ Geometry
 VertexArray
 
 TODO: add more descriptions
+
+Libs also needed
+===
+* CustomLogger (latest version)
+* KalmanLocationManager (latest version)
+* ...
 
 TODO: note about libs we import (a lot of Rx ones) and requirements (Java 8) 
