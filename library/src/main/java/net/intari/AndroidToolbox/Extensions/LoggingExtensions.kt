@@ -1,4 +1,4 @@
-package net.intari.AndroidToolbox
+package net.intari.AndroidToolbox.Extensions
 
 import net.intari.CustomLogger.CustomLog
 import java.lang.Exception
