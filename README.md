@@ -12,7 +12,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/intari/AndroidToolbox.svg)](https://github.com/intari/AndroidToolbox/stargazers)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/intari/AndroidToolbox/latest.svg)](https://github.com/intari/AndroidToolbox)
 [![Read the Docs](https://img.shields.io/readthedocs/androidtoolbox.svg)](http://androidtoolbox.readthedocs.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 
@@ -34,6 +33,7 @@ dependencies {
     compile 'net.intari:AndroidToolbox:{latest version}'
 }
 ```
+
 
 TODO: add more descriptions
 TODO: note about libs we import (a lot of Rx ones) and requirements (Java 8) 
