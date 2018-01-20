@@ -36,4 +36,5 @@ dependencies {
 
 
 TODO: add more descriptions
-TODO: note about libs we import (a lot of Rx ones) and requirements (Java 8) 
+TODO: note about libs we import (a lot of Rx ones) and requirements (Java 8)
+databinding is required
