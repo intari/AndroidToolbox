@@ -44,7 +44,7 @@ dependencies {
 
     implementation 'net.intari:CustomLogger:1.0.12' //CustomLog
     implementation 'net.intari:KalmanLocationManager:0.0.4'
-    implementation 'net.intari:AndroidToolboxCore:0.0.22' //'Core' version of toolbox
+    implementation 'net.intari:AndroidToolboxCore:0.0.26' //'Core' version of toolbox
     implementation 'com.trello.navi2:navi:2.0' //BaseActivity
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
@@ -57,9 +57,12 @@ dependencies {
     implementation 'com.yandex.android:mobmetricalib:2.77' //disabled by default
     implementation 'com.amplitude:android-sdk:2.14.1' //disabled by default
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.3'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.19.3"
+    // Kotlin Coroutines
+    implementation (["org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version",
+                     "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version",
+                     "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$kotlin_coroutines_version"
 
+    ])
 }
 
 // build a jar with source files
