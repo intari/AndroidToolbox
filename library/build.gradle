@@ -44,7 +44,7 @@ dependencies {
 
     implementation 'net.intari:CustomLogger:1.0.12' //CustomLog
     implementation 'net.intari:KalmanLocationManager:0.0.4'
-    implementation 'net.intari:AndroidToolboxCore:0.0.26' //'Core' version of toolbox
+    implementation 'net.intari:AndroidToolboxCore:0.0.28' //'Core' version of toolbox
     implementation 'com.trello.navi2:navi:2.0' //BaseActivity
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
